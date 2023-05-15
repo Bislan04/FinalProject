@@ -1,0 +1,75 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Favorite Albums{% endblock %}
+
+{% block content %}
+
+    <section>
+        <div class="section-browse">
+            <div class="section_account_block">
+                <a href="">
+                    <button>
+                        <i>
+                            <svg height="11" viewBox="0 0 10 11" width="10" xmlns="http://www.w3.org/2000/svg" fill="#000" fill-rule="nonzero" aria-hidden="true" class="web-navigation__auth-button-icon icon-button__icon icon-button__icon--before">
+                                <g>
+                                    <path d="M5 5.29495614c-1.29585799 0-2.38466244-1.17598684-2.38466244-2.67763158-.0058701-1.46546052 1.10063877-2.61732456 2.38466244-2.61732456 1.28994083 0 2.39053254 1.12774123 2.39053254 2.61129386 0 1.50767544-1.09467455 2.68366228-2.39053254 2.68366228zM1.31360947 11c-.97633136 0-1.31360947-.3015351-1.31360947-.8563596 0-1.5498904 1.92899408-3.68475882 5-3.68475882 3.06508876 0 5 2.13486842 5 3.68475882 0 .5548245-.33727811.8563596-1.31360947.8563596z"></path>
+                                </g>
+                            </svg>
+                        </i>
+                        <span>
+                            {{ user.username }}
+                        </span>
+                    </button>
+                </a>
+            </div>
+
+            <div class="container-block-main">
+                <div class="main-header-info">
+                    <div class="bg-image-header-info" style="background-image: url('https://t.scdn.co/images/3099b3803ad9496896c43f22fe9be8c4.png')"></div>
+                    <div class="title-header-info">
+                        <h1>My Favorite Albums</h1>
+                        <p>{{ user.username }} • {{ like_albums.count }}
+                            {% if like_albums.count > 1 %}
+                                albums
+                            {% else %}
+                                album
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+                <div class="music-container-main-block">
+                    <ul class="text-xs sm:text-base divide-y border-t cursor-default audio-tracks scroll_block_music">
+                        <div class="section_albums_container">
+                            {% for album in like_albums %}
+                                <div class="album_block">
+                                    <div class="albums_container_block">
+                                        <div class="albums_container_image_cover">
+                                            <div class="fav_albums_container_image">
+                                                <a href="{% url 'detail_album' album.id %}"><img src="{{ album.img.url }}"></a>
+                                            </div>
+                                        </div>
+                                        <div style="display: flex; align-items: center; width: 190px;">
+                                            <h2 style="width: 90%">{{ album.name_of_album }}</h2>
+                                            <form action="{% url 'remove_like_album' album.id %}" method="POST" style="width: 10%; display: flex; justify-content: flex-end;">
+                                                {% csrf_token %}
+                                                <button type="submit" name="album_id" value="{{ album.id }}">
+                                                    <i>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#FF0000" class="bi bi-dash-circle" viewBox="0 0 16 16">
+                                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                            <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+                                                        </svg>
+                                                    </i>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

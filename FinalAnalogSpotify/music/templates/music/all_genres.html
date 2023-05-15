@@ -1,0 +1,23 @@
+{% extends 'main/base.html' %}
+
+{% block title %} All Genres {% endblock %}
+
+{% block content %}
+
+<section>
+    <div class="section-browse">
+        <div class="all_genres_container_block">
+            <h1>ALL GENRES</h1>
+            <div class="genre_container_all_genres">
+                {% for genres in all_genres %}
+                    <a href="{% url 'detail_genre' genres.id %}" class="genre_list_block_detail" style="background-color: {{ genres.background_color }};">
+                        <h2>{{ genres.name_of_genre }}</h2>
+                        <img src="{{ genres.cover_image.url }}" alt="">
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

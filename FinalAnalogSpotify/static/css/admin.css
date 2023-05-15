@@ -1,0 +1,49 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+#container {
+ font-family: 'Poppins', sans-serif;
+}
+
+#header {
+    background-color: #4B0082;
+}
+
+#branding h1 a:visited {
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+
+}
+#branding h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 25px;
+}
+.module h2, .module caption, .inline-group h2 {
+    background-color: #4B0082;
+}
+a:link, a:visited {
+    color: #4B0082;
+}
+div.breadcrumbs {
+    background-color: #4B0082;
+}
+#nav-sidebar .current-model {
+	background-color: #ebd0ff;
+}
+.object-tools a:link, .object-tools a:visited {
+    background-color: #4B0082;
+}
+.button:active, input[type=submit]:active, input[type=button]:active, .button:focus, input[type=submit]:focus, input[type=button]:focus, .button:hover, input[type=submit]:hover, input[type=button]:hover {
+    background-color: #ebd0ff;
+}
+.button, input[type=submit], input[type=button], .submit-row input, a.button {
+    background: #4B0082;
+}
+.button.default, input[type=submit].default, .submit-row input.default {
+    background: #40006e;
+}
+.button.default:hover, input[type=submit].default:hover, .submit-row input.default:hover {
+    background: #290047;
+}
